@@ -7,11 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
         }
         .hero-gradient {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -25,32 +25,45 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .lang-btn.active {
+            color: #ffffff;
+            background-color: #4f46e5;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header -->
     <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-extrabold text-gray-900">Gritte.</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#philosophy" class="text-gray-600 hover:text-indigo-600 transition">Our Philosophy</a>
-                <a href="#journey" class="text-gray-600 hover:text-indigo-600 transition">The Journey</a>
-                <a href="#is-this-for-you" class="text-gray-600 hover:text-indigo-600 transition">Is This For You?</a>
-            </nav>
-            <a href="#contact" class="hidden md:inline-block bg-indigo-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105">
-                Begin Your Journey
-            </a>
-            <button id="mobile-menu-button" class="md:hidden">
-                <i data-lucide="menu"></i>
-            </button>
+            <div class="flex items-center">
+                <nav class="hidden md:flex space-x-8 mr-8">
+                    <a href="#philosophy" class="text-gray-600 hover:text-indigo-600 transition" data-key="nav_philosophy">Our Philosophy</a>
+                    <a href="#journey" class="text-gray-600 hover:text-indigo-600 transition" data-key="nav_journey">The Journey</a>
+                    <a href="#is-this-for-you" class="text-gray-600 hover:text-indigo-600 transition" data-key="nav_is_this_for_you">Is This For You?</a>
+                </nav>
+                
+                <!-- Language Switcher -->
+                <div class="flex items-center space-x-1 border border-gray-300 rounded-full p-1">
+                    <button id="lang-en" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+                    <button id="lang-zh" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition-colors" data-lang="zh">ZH</button>
+                </div>
+
+                <a href="#contact" class="hidden lg:inline-block bg-indigo-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 ml-4" data-key="nav_begin_journey">
+                    Begin Your Journey
+                </a>
+                <button id="mobile-menu-button" class="md:hidden ml-4">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-4">
-            <a href="#philosophy" class="block text-gray-600 hover:text-indigo-600 transition">Our Philosophy</a>
-            <a href="#journey" class="block text-gray-600 hover:text-indigo-600 transition">The Journey</a>
-            <a href="#is-this-for-you" class="block text-gray-600 hover:text-indigo-600 transition">Is This For You?</a>
-            <a href="#contact" class="block w-full text-center bg-indigo-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-indigo-700 transition">
+            <a href="#philosophy" class="block text-gray-600 hover:text-indigo-600 transition" data-key="nav_philosophy_mobile">Our Philosophy</a>
+            <a href="#journey" class="block text-gray-600 hover:text-indigo-600 transition" data-key="nav_journey_mobile">The Journey</a>
+            <a href="#is-this-for-you" class="block text-gray-600 hover:text-indigo-600 transition" data-key="nav_is_this_for_you_mobile">Is This For You?</a>
+            <a href="#contact" class="block w-full text-center bg-indigo-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-indigo-700 transition" data-key="nav_begin_journey_mobile">
                 Begin Your Journey
             </a>
         </div>
@@ -60,9 +73,9 @@
         <!-- Hero Section -->
         <section class="hero-gradient pt-32 pb-20 md:pt-48 md:pb-32 text-center">
             <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">Your life is the curriculum.</h1>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">A 30-day guided journey of self-discovery, where your story writes the textbook. We don't give you the answers—we help you discover your own.</p>
-                <a href="#contact" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 inline-block shadow-lg">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4" data-key="hero_title">Your life is the curriculum.</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8" data-key="hero_subtitle">A 30-day guided journey of self-discovery, where your story writes the textbook. We don't give you the answers—we help you discover your own.</p>
+                <a href="#contact" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 inline-block shadow-lg" data-key="hero_cta">
                     Schedule a Free Exploratory Call
                 </a>
             </div>
@@ -71,32 +84,32 @@
         <!-- Philosophy Section -->
         <section id="philosophy" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-6 text-center section-fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">A Course About You, For You.</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16">Forget generic lessons. Our methodology is built on three core principles designed to create a learning experience as unique as you are.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="philosophy_title">A Course About You, For You.</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16" data-key="philosophy_subtitle">Forget generic lessons. Our methodology is built on three core principles designed to create a learning experience as unique as you are.</p>
                 <div class="grid md:grid-cols-3 gap-12">
                     <!-- Pillar 1 -->
-                    <div class="flex flex-col items-center">
-                        <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4">
-                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    <div>
+                        <div class="flex flex-col items-center">
+                            <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
+                            <h3 class="text-xl font-bold mb-2" data-key="pillar1_title">Your Experience is the Source</h3>
+                            <p class="text-gray-600" data-key="pillar1_desc">We use your personal and professional life as the source material. Learning is built from your lived experience, making every insight relevant and immediately applicable.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Your Experience is the Source</h3>
-                        <p class="text-gray-600">We use your personal and professional life as the source material. Learning is built from your lived experience, making every insight relevant and immediately applicable.</p>
                     </div>
                     <!-- Pillar 2 -->
-                    <div class="flex flex-col items-center">
-                        <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4">
-                            <i data-lucide="book-heart" class="w-8 h-8"></i>
+                    <div>
+                        <div class="flex flex-col items-center">
+                            <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4"><i data-lucide="book-heart" class="w-8 h-8"></i></div>
+                            <h3 class="text-xl font-bold mb-2" data-key="pillar2_title">A Safe Space to Grow</h3>
+                            <p class="text-gray-600" data-key="pillar2_desc">Your private journal is a confidential workshop for your thoughts—a "transitional space" to explore ideas and construct new meanings without pressure or judgment.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">A Safe Space to Grow</h3>
-                        <p class="text-gray-600">Your private journal is a confidential workshop for your thoughts—a "transitional space" to explore ideas and construct new meanings without pressure or judgment.</p>
                     </div>
                     <!-- Pillar 3 -->
-                    <div class="flex flex-col items-center">
-                        <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4">
-                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    <div>
+                        <div class="flex flex-col items-center">
+                            <div class="bg-indigo-100 text-indigo-600 rounded-full p-4 mb-4"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                            <h3 class="text-xl font-bold mb-2" data-key="pillar3_title">Guidance Without Overwhelm</h3>
+                            <p class="text-gray-600" data-key="pillar3_desc">Our experts act as your shield and backbone. They do the heavy lifting behind the scenes, distilling complex insights into simple, gentle, and actionable guidance.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Guidance Without Overwhelm</h3>
-                        <p class="text-gray-600">Our experts act as your shield and backbone. They do the heavy lifting behind the scenes, distilling complex insights into simple, gentle, and actionable guidance.</p>
                     </div>
                 </div>
             </div>
@@ -106,41 +119,22 @@
         <section id="journey" class="py-20 md:py-28 bg-gray-50">
             <div class="container mx-auto px-6 section-fade-in">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Your 30-Day Journey</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">A carefully designed rhythm of work and rest to support deep reflection and sustainable growth.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="journey_title">Your 30-Day Journey</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-key="journey_subtitle">A carefully designed rhythm of work and rest to support deep reflection and sustainable growth.</p>
                 </div>
                 <div class="relative max-w-4xl mx-auto">
-                    <!-- The line -->
                     <div class="absolute left-1/2 top-0 h-full w-0.5 bg-indigo-200 hidden md:block"></div>
-                    <!-- Step 1 -->
                     <div class="md:flex items-center mb-12">
-                        <div class="md:w-1/2 md:pr-8">
-                            <h3 class="text-2xl font-bold mb-2">1. Guided Journaling</h3>
-                            <p class="text-gray-600">Begin with free-writing to explore your thoughts, gradually moving to tailored prompts from your expert guide that help you focus on emerging themes and key questions.</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 flex justify-center">
-                             <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="feather" class="w-16 h-16 text-indigo-600 mx-auto"></i></div>
-                        </div>
+                        <div class="md:w-1/2 md:pr-8"><h3 class="text-2xl font-bold mb-2" data-key="step1_title">1. Guided Journaling</h3><p class="text-gray-600" data-key="step1_desc">Begin with free-writing to explore your thoughts, gradually moving to tailored prompts from your expert guide that help you focus on emerging themes and key questions.</p></div>
+                        <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 flex justify-center"><div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="feather" class="w-16 h-16 text-indigo-600 mx-auto"></i></div></div>
                     </div>
-                    <!-- Step 2 -->
                     <div class="md:flex flex-row-reverse items-center mb-12">
-                        <div class="md:w-1/2 md:pl-8">
-                            <h3 class="text-2xl font-bold mb-2">2. Expert Consultation</h3>
-                            <p class="text-gray-600">Four private, one-on-one calls are scheduled at key moments in your journey. These are deep-dive sessions to discuss your discoveries, overcome hurdles, and plan your next steps.</p>
-                        </div>
-                        <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 flex justify-center">
-                            <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="users" class="w-16 h-16 text-indigo-600 mx-auto"></i></div>
-                        </div>
+                        <div class="md:w-1/2 md:pl-8"><h3 class="text-2xl font-bold mb-2" data-key="step2_title">2. Expert Consultation</h3><p class="text-gray-600" data-key="step2_desc">Four private, one-on-one calls are scheduled at key moments in your journey. These are deep-dive sessions to discuss your discoveries, overcome hurdles, and plan your next steps.</p></div>
+                        <div class="md:w-1/2 md:pr-8 mt-4 md:mt-0 flex justify-center"><div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="users" class="w-16 h-16 text-indigo-600 mx-auto"></i></div></div>
                     </div>
-                     <!-- Step 3 -->
                     <div class="md:flex items-center">
-                        <div class="md:w-1/2 md:pr-8">
-                            <h3 class="text-2xl font-bold mb-2">3. Integrated Breaks</h3>
-                            <p class="text-gray-600">Growth requires rest. With eight scheduled break days, you have the time and space to process your insights, recharge, and let your discoveries settle without feeling rushed.</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 flex justify-center">
-                            <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="coffee" class="w-16 h-16 text-indigo-600 mx-auto"></i></div>
-                        </div>
+                        <div class="md:w-1/2 md:pr-8"><h3 class="text-2xl font-bold mb-2" data-key="step3_title">3. Integrated Breaks</h3><p class="text-gray-600" data-key="step3_desc">Growth requires rest. With eight scheduled break days, you have the time and space to process your insights, recharge, and let your discoveries settle without feeling rushed.</p></div>
+                        <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0 flex justify-center"><div class="bg-white p-6 rounded-lg shadow-md w-full md:w-auto"><i data-lucide="coffee" class="w-16 h-16 text-indigo-600 mx-auto"></i></div></div>
                     </div>
                 </div>
             </div>
@@ -151,31 +145,19 @@
             <div class="container mx-auto px-6 section-fade-in">
                 <div class="md:flex items-center">
                     <div class="md:w-1/2 md:pr-12">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Is Gritte For You?</h2>
-                        <p class="text-lg text-gray-600 mb-8">This journey is designed for individuals who are ready to engage in a deep, meaningful process of self-discovery. It's for you if...</p>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="for_you_title">Is Gritte For You?</h2>
+                        <p class="text-lg text-gray-600 mb-8" data-key="for_you_subtitle">This journey is designed for individuals who are ready to engage in a deep, meaningful process of self-discovery. It's for you if...</p>
                         <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                <span>You are navigating a significant life or career transition and seek clarity.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                <span>You feel "stuck" and are looking for a personalized path forward.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                <span>You are tired of impersonal self-help and want truly tailored guidance.</span>
-                            </li>
-                             <li class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i>
-                                <span>You believe the best answers lie within you, and you need help uncovering them.</span>
-                            </li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i><span data-key="for_you_point1">You are navigating a significant life or career transition and seek clarity.</span></li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i><span data-key="for_you_point2">You feel "stuck" and are looking for a personalized path forward.</span></li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i><span data-key="for_you_point3">You are tired of impersonal self-help and want truly tailored guidance.</span></li>
+                            <li class="flex items-start"><i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0"></i><span data-key="for_you_point4">You believe the best answers lie within you, and you need help uncovering them.</span></li>
                         </ul>
                     </div>
                     <div class="md:w-1/2 mt-12 md:mt-0">
                         <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
-                            <h3 class="text-xl font-bold mb-4">"A revelation. It wasn't a course, it was a conversation with myself, expertly guided. I found more clarity in 30 days than in the past 5 years."</h3>
-                            <p class="font-semibold text-gray-700">- A. Thompson, Program Graduate</p>
+                            <h3 class="text-xl font-bold mb-4" data-key="testimonial_text">"A revelation. It wasn't a course, it was a conversation with myself, expertly guided. I found more clarity in 30 days than in the past 5 years."</h3>
+                            <p class="font-semibold text-gray-700" data-key="testimonial_author">- A. Thompson, Program Graduate</p>
                         </div>
                     </div>
                 </div>
@@ -185,9 +167,9 @@
         <!-- Contact Section -->
         <section id="contact" class="py-20 md:py-32 hero-gradient">
             <div class="container mx-auto px-6 text-center section-fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to start a conversation with yourself?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for you.</p>
-                <a href="mailto:hello@gritte.com" class="bg-gray-900 text-white font-bold py-4 px-8 rounded-lg hover:bg-black transition-transform transform hover:scale-105 inline-block shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-key="contact_title">Ready to start a conversation with yourself?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8" data-key="contact_subtitle">Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for you.</p>
+                <a href="mailto:hello@gritte.com" class="bg-gray-900 text-white font-bold py-4 px-8 rounded-lg hover:bg-black transition-transform transform hover:scale-105 inline-block shadow-lg" data-key="contact_cta">
                     Schedule Your Free Call
                 </a>
             </div>
@@ -198,57 +180,179 @@
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center">
             <p class="font-bold text-lg">Gritte.</p>
-            <p class="text-gray-400 text-sm mt-2">&copy; 2024 Gritte Consultation Services. All Rights Reserved.</p>
+            <p class="text-gray-400 text-sm mt-2" data-key="footer_text">&copy; 2024 Gritte Consultation Services. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // --- Lucide Icons Activation ---
-        lucide.createIcons();
-        console.log("Lucide icons initialized.");
+        // --- Translations Object ---
+        const translations = {
+            en: {
+                nav_philosophy: "Our Philosophy",
+                nav_journey: "The Journey",
+                nav_is_this_for_you: "Is This For You?",
+                nav_begin_journey: "Begin Your Journey",
+                nav_philosophy_mobile: "Our Philosophy",
+                nav_journey_mobile: "The Journey",
+                nav_is_this_for_you_mobile: "Is This For You?",
+                nav_begin_journey_mobile: "Begin Your Journey",
+                hero_title: "Your life is the curriculum.",
+                hero_subtitle: "A 30-day guided journey of self-discovery, where your story writes the textbook. We don't give you the answers—we help you discover your own.",
+                hero_cta: "Schedule a Free Exploratory Call",
+                philosophy_title: "A Course About You, For You.",
+                philosophy_subtitle: "Forget generic lessons. Our methodology is built on three core principles designed to create a learning experience as unique as you are.",
+                pillar1_title: "Your Experience is the Source",
+                pillar1_desc: "We use your personal and professional life as the source material. Learning is built from your lived experience, making every insight relevant and immediately applicable.",
+                pillar2_title: "A Safe Space to Grow",
+                pillar2_desc: "Your private journal is a confidential workshop for your thoughts—a 'transitional space' to explore ideas and construct new meanings without pressure or judgment.",
+                pillar3_title: "Guidance Without Overwhelm",
+                pillar3_desc: "Our experts act as your shield and backbone. They do the heavy lifting behind the scenes, distilling complex insights into simple, gentle, and actionable guidance.",
+                journey_title: "Your 30-Day Journey",
+                journey_subtitle: "A carefully designed rhythm of work and rest to support deep reflection and sustainable growth.",
+                step1_title: "1. Guided Journaling",
+                step1_desc: "Begin with free-writing to explore your thoughts, gradually moving to tailored prompts from your expert guide that help you focus on emerging themes and key questions.",
+                step2_title: "2. Expert Consultation",
+                step2_desc: "Four private, one-on-one calls are scheduled at key moments in your journey. These are deep-dive sessions to discuss your discoveries, overcome hurdles, and plan your next steps.",
+                step3_title: "3. Integrated Breaks",
+                step3_desc: "Growth requires rest. With eight scheduled break days, you have the time and space to process your insights, recharge, and let your discoveries settle without feeling rushed.",
+                for_you_title: "Is Gritte For You?",
+                for_you_subtitle: "This journey is designed for individuals who are ready to engage in a deep, meaningful process of self-discovery. It's for you if...",
+                for_you_point1: "You are navigating a significant life or career transition and seek clarity.",
+                for_you_point2: "You feel 'stuck' and are looking for a personalized path forward.",
+                for_you_point3: "You are tired of impersonal self-help and want truly tailored guidance.",
+                for_you_point4: "You believe the best answers lie within you, and you need help uncovering them.",
+                testimonial_text: "\"A revelation. It wasn't a course, it was a conversation with myself, expertly guided. I found more clarity in 30 days than in the past 5 years.\"",
+                testimonial_author: "- A. Thompson, Program Graduate",
+                contact_title: "Ready to start a conversation with yourself?",
+                contact_subtitle: "Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for you.",
+                contact_cta: "Schedule Your Free Call",
+                footer_text: "&copy; 2024 Gritte Consultation Services. All Rights Reserved."
+            },
+            zh: {
+                nav_philosophy: "我们的理念",
+                nav_journey: "你的旅程",
+                nav_is_this_for_you: "适合你吗?",
+                nav_begin_journey: "开启你的旅程",
+                nav_philosophy_mobile: "我们的理念",
+                nav_journey_mobile: "你的旅程",
+                nav_is_this_for_you_mobile: "适合你吗?",
+                nav_begin_journey_mobile: "开启你的旅程",
+                hero_title: "你的生活，就是你的课程。",
+                hero_subtitle: "一场为期30天的引导式自我发现之旅，你的故事，将书写你自己的教科书。我们不提供答案——我们帮助你找到属于自己的答案。",
+                hero_cta: "预约免费咨询",
+                philosophy_title: "一门为你而设的课程。",
+                philosophy_subtitle: "告别千篇一律的课程。我们的方法建立在三个核心原则之上，旨在创造如你一般独特的学习体验。",
+                pillar1_title: "你的经验是源泉",
+                pillar1_desc: "我们将你的个人和职业生活作为原始素材。学习建立在你亲身经历之上，让每一个见解都与你息息相关，并可立即应用。",
+                pillar2_title: "一个安全的成长空间",
+                pillar2_desc: "你的私人日记是一个思想的秘密工坊——一个“过渡空间”，让你在没有压力或评判的情况下探索思想，构建新的意义。",
+                pillar3_title: "无负担的专业指导",
+                pillar3_desc: "我们的专家是你的后盾和护盾。他们在幕后进行繁复的分析工作，将复杂的见解提炼成简单、温和且可操作的指导。",
+                journey_title: "你的30天旅程",
+                journey_subtitle: "一个精心设计的工作与休息节奏，以支持深度反思和可持续的成长。",
+                step1_title: "1. 引导式日记",
+                step1_desc: "从自由书写开始，探索你的思绪，然后逐步转向由你的专家导师量身定制的提示，帮助你专注于浮现的主题和关键问题。",
+                step2_title: "2. 专家咨询",
+                step2_desc: "在旅程的关键时刻，我们安排了四次私人一对一通话。这些是深度交流的会议，用于讨论你的发现，克服障碍，并规划你的下一步。",
+                step3_title: "3. 整合性休息",
+                step3_desc: "成长需要休息。通过八个计划好的休息日，你有足够的时间和空间来消化你的见解，充电，并让你的发现沉淀下来，而不会感到匆忙。",
+                for_you_title: "Gritte适合你吗？",
+                for_you_subtitle: "这个旅程专为准备好进行深度、有意义的自我发现过程的个人而设计。如果你符合以下情况，它就适合你...",
+                for_you_point1: "你正在经历重大的人生或职业转型，并寻求清晰的方向。",
+                for_you_point2: "你感到“停滞不前”，并正在寻找一条个性化的前进道路。",
+                for_you_point3: "你厌倦了非个人化的自助方法，并希望获得真正量身定制的指导。",
+                for_you_point4: "你相信最好的答案就在自己心中，并需要帮助来发掘它们。",
+                testimonial_text: "“这简直是一个启示。它不是一门课程，而是一场在专家巧妙引导下与自己的对话。我在这30天里获得的清晰度，比过去5年还要多。”",
+                testimonial_author: "- A. Thompson, 项目毕业生",
+                contact_title: "准备好与自己开始一场对话了吗？",
+                contact_subtitle: "你的旅程始于第一步。与我们的导师安排一次免费、无义务的探索性通话，以了解更多信息，看看Gritte是否适合你。",
+                contact_cta: "预约免费通话",
+                footer_text: "&copy; 2024 Gritte 咨询服务。版权所有。"
+            }
+        };
 
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            console.log("Mobile menu button clicked.");
-            mobileMenu.classList.toggle('hidden');
-        });
+        // --- Language Switching Logic ---
+        const setLanguage = (lang) => {
+            console.log(`Setting language to: ${lang}`);
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    elem.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('gritte-lang', lang);
 
-        // --- Smooth Scrolling for Nav Links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                console.log(`Scrolling to ${targetId}`);
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
+            // Update active button style
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+            console.log("Language set and UI updated.");
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM fully loaded and parsed.");
+            
+            // --- Lucide Icons Activation ---
+            lucide.createIcons();
+            console.log("Lucide icons initialized.");
+
+            // --- Language Button Event Listeners ---
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.getAttribute('data-lang');
+                    console.log(`Language button clicked: ${lang}`);
+                    setLanguage(lang);
                 });
-                // Close mobile menu on link click
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
             });
-        });
 
-        // --- Scroll-based Fade-in Animation ---
-        const sections = document.querySelectorAll('.section-fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log(`Section ${entry.target.id} is intersecting, adding 'visible' class.`);
-                    entry.target.classList.add('visible');
-                }
+            // --- Set Initial Language ---
+            const savedLang = localStorage.getItem('gritte-lang');
+            const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+            const initialLang = savedLang || browserLang;
+            console.log(`Initial language check: saved='${savedLang}', browser='${browserLang}', setting to '${initialLang}'`);
+            setLanguage(initialLang);
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                console.log("Mobile menu button clicked.");
+                mobileMenu.classList.toggle('hidden');
             });
-        }, {
-            threshold: 0.1 
-        });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        console.log("Intersection observer set up for fade-in sections.");
+            // --- Smooth Scrolling for Nav Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    console.log(`Scrolling to ${targetId}`);
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
 
+            // --- Scroll-based Fade-in Animation ---
+            const sections = document.querySelectorAll('.section-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        console.log(`Section ${entry.target.id || 'element'} is intersecting, adding 'visible' class.`);
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 
+            });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            console.log("Intersection observer set up for fade-in sections.");
+        });
     </script>
 </body>
 </html>
