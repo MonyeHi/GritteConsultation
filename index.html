@@ -223,6 +223,22 @@
         </div>
     </footer>
 
+        <!-- Policy Modal -->
+    <div id="policy-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div id="modal-overlay" class="absolute inset-0 bg-black/60 modal-overlay"></div>
+        <div id="modal-content" class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto p-8 transform scale-95">
+            <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-4 mb-4">
+                <h2 id="modal-title" class="text-2xl font-bold dark:text-white"></h2>
+                <button id="modal-close-btn" class="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="modal-body" class="prose dark:prose-invert max-w-none">
+                <!-- Policy content will be injected here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // This script runs after the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
@@ -270,6 +286,32 @@
                     contact_subtitle: "Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for your learning goals.",
                     contact_cta: "Schedule Your Free Consultation",
                     footer_text: "&copy; 2025 Gritte Personalized Learning. All Rights Reserved."
+                    footer_terms: "Terms of Service",
+                    footer_privacy: "Privacy Policy",
+                    modal_title_terms: "Terms of Service",
+                    modal_title_privacy: "Privacy Policy",
+                    terms_content: `
+                        <h3>Refund Policy</h3>
+                        <p>Our goal is to provide a transformative learning experience. We offer the following refund policy:</p>
+                        <ul>
+                            <li><strong>Within the first 7 days:</strong> You may request a refund for any reason. A small service and administrative fee will be deducted from the total amount.</li>
+                            <li><strong>After 7 days:</strong> Refunds will not be issued for client-side reasons, including but not limited to a change of mind, lack of time, or failure to participate in the program.</li>
+                            <li><strong>Service Guarantee:</strong> You will receive a full, 100% refund if Gritte is unable to deliver the promised services due to non-client-side responsibilities, such as expert unavailability or significant technical failures on our platform.</li>
+                        </ul>
+                        <h3>Client Responsibilities</h3>
+                        <p>This journey's success depends on your active and honest participation. We expect clients to engage with the journaling process and attend scheduled consultations to achieve the best possible outcome.</p>
+                    `,
+                    privacy_content: `
+                        <h3>Our Commitment to Your Privacy</h3>
+                        <p>Your trust is paramount to our service. This policy outlines how we handle your data.</p>
+                        <ul>
+                            <li><strong>Data Collection:</strong> We collect your name, email address for communication, and the content of your journal entries.</li>
+                            <li><strong>Data Usage:</strong> Your journal entries are used exclusively by your assigned experts to provide personalized guidance and support your learning journey. They are fundamental to our service.</li>
+                            <li><strong>Data Security:</strong> We use modern security measures to protect your personal information and journal entries from unauthorized access.</li>
+                            <li><strong>Data Sharing:</strong> We will never share, sell, or rent your personal information or journal content with any third parties. All expert discussions about your case are internal and bound by strict confidentiality agreements.</li>
+                        </ul>
+                    `
+                },
                 },
                 zh: {
                     nav_philosophy: "我们的理念",
@@ -311,6 +353,32 @@
                     contact_subtitle: "你的旅程始于第一步。与我们的导师安排一次免费、无义务的探索性通话，以了解更多信息，看看Gritte是否适合你的学习目标。",
                     contact_cta: "预约免费咨询",
                     footer_text: "&copy; 2025 Gritte 个性化学习。版权所有。"
+                    footer_terms: "服务条款",
+                    footer_privacy: "隐私政策",
+                    modal_title_terms: "服务条款",
+                    modal_title_privacy: "隐私政策",
+                    terms_content: `
+                        <h3>退款政策</h3>
+                        <p>我们的目标是提供变革性的学习体验。我们提供以下退款政策：</p>
+                        <ul>
+                            <li><strong>服务开始后的7天内：</strong>您可以无理由申请退款。我们将从总金额中扣除一小部分服务与管理费用。</li>
+                            <li><strong>服务开始7天后：</strong>因客户方原因（包括但不限于改变主意、时间不足或未能参与项目）提出的退款请求将不被受理。</li>
+                            <li><strong>服务保障：</strong>如果Gritte因非客户方责任（例如专家无法提供服务或我们的平台出现重大技术故障）而无法提供承诺的服务，您将获得100%全额退款。</li>
+                        </ul>
+                        <h3>客户责任</h3>
+                        <p>此旅程的成功取决于您的积极和坦诚参与。我们期望客户能投入到日记写作过程中并参加预定的咨询，以达到最佳效果。</p>
+                    `,
+                    privacy_content: `
+                        <h3>我们对您隐私的承诺</h3>
+                        <p>您的信任是我们服务的基石。本政策概述了我们如何处理您的数据。</p>
+                        <ul>
+                            <li><strong>数据收集：</strong>我们收集您的姓名、用于通信的电子邮件地址以及您的日记内容。</li>
+                            <li><strong>数据使用：</strong>您的日记内容仅由您指定的专家使用，以提供个性化指导并支持您的学习之旅。这是我们服务的核心。</li>
+                            <li><strong>数据安全：</strong>我们采用现代安全措施保护您的个人信息和日记条目，防止未经授权的访问。</li>
+                            <li><strong>数据共享：</strong>我们绝不会与任何第三方分享、出售或出租您的个人信息或日记内容。所有关于您案例的专家内部讨论都受严格的保密协议约束。</li>
+                        </ul>
+                    `
+                }
                 }
             };
 
@@ -429,6 +497,11 @@
                 observer.observe(section);
             });
             console.log("Intersection observer set up for fade-in sections.");
+                    // Modal event listeners
+            termsBtn.addEventListener('click', () => openModal('terms'));
+            privacyBtn.addEventListener('click', () => openModal('privacy'));
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
         });
     </script>
 </body>
