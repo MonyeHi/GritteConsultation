@@ -20,7 +20,7 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         html.dark .hero-gradient {
-             background: oklch(27.8% 0.033 256.848);
+             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
         }
         .section-fade-in {
             opacity: 0;
@@ -35,7 +35,6 @@
             color: #ffffff;
             background-color: #4f46e5;
         }
-        /* Gradient text for the brand name */
         .gritte-gradient {
             background: linear-gradient(45deg, #6366F1, #8B5CF6);
             -webkit-background-clip: text;
@@ -43,22 +42,26 @@
             background-clip: text;
             text-fill-color: transparent;
         }
-        /* Style for the colored underline */
         .highlight-underline {
             text-decoration: underline;
-            text-decoration-color: #8B5CF6; /* A purple/indigo color from the gradient */
+            text-decoration-color: #8B5CF6;
             text-decoration-thickness: 2px;
             text-underline-offset: 4px;
         }
+        /* Modal styles */
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
     </style>
     <script>
-        // Set theme on initial load to prevent flash of wrong theme
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
-        // Tailwind config for dark mode
         tailwind.config = {
             darkMode: 'class',
         }
@@ -77,13 +80,11 @@
                     <a href="#is-this-for-you" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white transition" data-key="nav_is_this_for_you">Is This For You?</a>
                 </nav>
                 
-                <!-- Language Switcher -->
                 <div class="flex items-center space-x-1 border border-gray-300 dark:border-gray-600 rounded-full p-1">
                     <button id="lang-en" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition-colors" data-lang="en">EN</button>
-                    <button id="lang-zh" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition-colors" data-lang="zh">中文</button>
+                    <button id="lang-zh" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition-colors" data-lang="zh">ZH</button>
                 </div>
 
-                <!-- Dark Mode Toggle -->
                 <button id="theme-toggle" class="ml-4 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white transition-colors">
                     <i data-lucide="sun" class="w-5 h-5 hidden" id="theme-toggle-sun"></i>
                     <i data-lucide="moon" class="w-5 h-5 hidden" id="theme-toggle-moon"></i>
@@ -97,7 +98,6 @@
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-4">
             <a href="#philosophy" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white transition" data-key="nav_philosophy_mobile">Our Philosophy</a>
             <a href="#journey" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white transition" data-key="nav_journey_mobile">The Journey</a>
@@ -110,10 +110,10 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient pt-32 pb-20 md:pt-48 md:pb-32 text-center dark:bg-gray-800">
+        <section class="hero-gradient pt-32 pb-20 md:pt-48 md:pb-32 text-center">
             <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4" data-key="hero_title">Master the Art of Learning</h1>
-                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8" data-key="hero_subtitle">A 30-day guided journey to develop your meta-cognitive abilities. We don't teach you what to think—we help you transform how you think.</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4" data-key="hero_title">Master the Art of Learning.</h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8" data-key="hero_subtitle">A 30-day guided journey to develop your meta-cognitive abilities. We don't teach you *what* to think—we help you transform *how* you think.</p>
                 <a href="#contact" class="bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 inline-block shadow-lg" data-key="hero_cta">
                     Schedule a Free Consultation
                 </a>
@@ -121,12 +121,11 @@
         </section>
 
         <!-- Philosophy Section -->
-        <section id="philosophy" class="py-20 md:py-28 bg-white dark:bg-gray-800">
+        <section id="philosophy" class="py-20 md:py-28 bg-white dark:bg-black">
             <div class="container mx-auto px-6 text-center section-fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white" data-key="philosophy_title">A Learning Experience About You, For You.</h2>
                 <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-16" data-key="philosophy_subtitle">Forget one-size-fits-all curricula. Our methodology is built on three core principles designed for a truly personalized learning experience.</p>
                 <div class="grid md:grid-cols-3 gap-12">
-                    <!-- Pillar 1 -->
                     <div>
                         <div class="flex flex-col items-center">
                             <div class="bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400 rounded-full p-4 mb-4"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
@@ -134,7 +133,6 @@
                             <p class="text-gray-600 dark:text-gray-400" data-key="pillar1_desc">We use your questions, projects, and challenges as the source material. Learning is built from your lived experience, making every insight relevant and immediately applicable.</p>
                         </div>
                     </div>
-                    <!-- Pillar 2 -->
                     <div>
                         <div class="flex flex-col items-center">
                             <div class="bg-orange-100 text-orange-600 dark:bg-orange-900/50 dark:text-orange-400 rounded-full p-4 mb-4"><i data-lucide="book-heart" class="w-8 h-8"></i></div>
@@ -142,7 +140,6 @@
                             <p class="text-gray-600 dark:text-gray-400" data-key="pillar2_desc">Your private journal is a confidential workshop for your thoughts—a "transitional space" to connect ideas and refine your thinking process without pressure or judgment.</p>
                         </div>
                     </div>
-                    <!-- Pillar 3 -->
                     <div>
                         <div class="flex flex-col items-center">
                             <div class="bg-teal-100 text-teal-600 dark:bg-teal-900/50 dark:text-teal-400 rounded-full p-4 mb-4"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
@@ -155,7 +152,7 @@
         </section>
 
         <!-- The Journey Section -->
-        <section id="journey" class="py-20 md:py-28 bg-gray-50 dark:bg-gray-800">
+        <section id="journey" class="py-20 md:py-28 bg-gray-50 dark:bg-black">
             <div class="container mx-auto px-6 section-fade-in">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white" data-key="journey_title">Your 30-Day Learning Journey</h2>
@@ -180,7 +177,7 @@
         </section>
 
         <!-- Is This For You? Section -->
-        <section id="is-this-for-you" class="py-20 md:py-28 bg-white dark:bg-gray-800">
+        <section id="is-this-for-you" class="py-20 md:py-28 bg-white dark:bg-black">
             <div class="container mx-auto px-6 section-fade-in">
                 <div class="md:flex items-center">
                     <div class="md:w-1/2 md:pr-12">
@@ -204,7 +201,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 hero-gradient dark:bg-gray-800">
+        <section id="contact" class="py-20 md:py-32 hero-gradient">
             <div class="container mx-auto px-6 text-center section-fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4" data-key="contact_title">Ready to transform your learning?</h2>
                 <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8" data-key="contact_subtitle">Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for your learning goals.</p>
@@ -219,11 +216,16 @@
     <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
         <div class="container mx-auto px-6 text-center">
             <p class="font-bold text-lg gritte-gradient">Gritte.</p>
-            <p class="text-gray-400 text-sm mt-2" data-key="footer_text">&copy; 2025 Gritte Personalized Learning. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-4 my-4">
+                <button class="text-gray-400 hover:text-white transition" data-key="footer_terms" id="terms-btn">Terms of Service</button>
+                <span class="text-gray-500">|</span>
+                <button class="text-gray-400 hover:text-white transition" data-key="footer_privacy" id="privacy-btn">Privacy Policy</button>
+            </div>
+            <p class="text-gray-400 text-sm" data-key="footer_text">&copy; 2025 Gritte Personalized Learning. All Rights Reserved.</p>
         </div>
     </footer>
 
-        <!-- Policy Modal -->
+    <!-- Policy Modal -->
     <div id="policy-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
         <div id="modal-overlay" class="absolute inset-0 bg-black/60 modal-overlay"></div>
         <div id="modal-content" class="modal-content bg-white dark:bg-gray-800 rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto p-8 transform scale-95">
@@ -239,12 +241,11 @@
         </div>
     </div>
 
+
     <script>
-        // This script runs after the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             console.log("DOM fully loaded and parsed.");
             
-            // --- Translations Object ---
             const translations = {
                 en: {
                     nav_philosophy: "Our Philosophy",
@@ -255,10 +256,10 @@
                     nav_journey_mobile: "The Journey",
                     nav_is_this_for_you_mobile: "Is This For You?",
                     nav_begin_journey_mobile: "Begin Your Journey",
-                    hero_title: "Master the Art of Learning",
+                    hero_title: "Master the Art of Learning.",
                     hero_subtitle: "A 30-day guided journey to develop your meta-cognitive abilities. We don't teach you <span class='highlight-underline'>what</span> to think—we help you transform <span class='highlight-underline'>how</span> you think.",
                     hero_cta: "Schedule a Free Consultation",
-                    philosophy_title: "A Learning Experience About You, For You",
+                    philosophy_title: "A Learning Experience About You, For You.",
                     philosophy_subtitle: "Forget one-size-fits-all curricula. Our methodology is built on three core principles designed for a truly personalized learning experience.",
                     pillar1_title: "Your Experience is the Curriculum",
                     pillar1_desc: "We use your questions, projects, and challenges as the source material. Learning is built from your lived experience, making every insight relevant and immediately applicable.",
@@ -285,7 +286,7 @@
                     contact_title: "Ready to transform your learning?",
                     contact_subtitle: "Your journey begins with a single step. Schedule a complimentary, no-obligation exploratory call with one of our guides to learn more and see if Gritte is the right fit for your learning goals.",
                     contact_cta: "Schedule Your Free Consultation",
-                    footer_text: "&copy; 2025 Gritte Personalized Learning. All Rights Reserved."
+                    footer_text: "&copy; 2025 Gritte Personalized Learning. All Rights Reserved.",
                     footer_terms: "Terms of Service",
                     footer_privacy: "Privacy Policy",
                     modal_title_terms: "Terms of Service",
@@ -312,7 +313,6 @@
                         </ul>
                     `
                 },
-                },
                 zh: {
                     nav_philosophy: "我们的理念",
                     nav_journey: "学习之旅",
@@ -322,15 +322,15 @@
                     nav_journey_mobile: "学习之旅",
                     nav_is_this_for_you_mobile: "适合你吗?",
                     nav_begin_journey_mobile: "开启学习之旅",
-                    hero_title: "掌握学习的艺术",
+                    hero_title: "掌握学习的艺术。",
                     hero_subtitle: "一场为期30天的引导式旅程，旨在发展你的元认知能力。我们不教你<span class='highlight-underline'>思考什么</span>——我们助你升级你的<span class='highlight-underline'>思考之道</span>。",
                     hero_cta: "预约免费咨询",
-                    philosophy_title: "一场真正为你而设的个性化学习体验升级旅程",
-                    philosophy_subtitle: "告别千篇一律。我们的方法建立在三个核心原则之上，旨在创造真正个性化的学习体验。",
+                    philosophy_title: "一门真正为你而设的个性化学习体验。",
+                    philosophy_subtitle: "告别千篇一律的课程。我们的方法建立在三个核心原则之上，旨在创造真正个性化的学习体验。",
                     pillar1_title: "你的经验是课程",
                     pillar1_desc: "我们将你的问题、项目和挑战作为学习的原始素材。知识从你的亲身经历中生长出来，让每一个见解都与你息息相关。",
                     pillar2_title: "一个安全的深度学习空间",
-                    pillar2_desc: "你的日志是一个思想的秘密工坊——一个“过渡空间”，让你在没有压力或评判的情况下，连接思想，并精进你的思维过程。",
+                    pillar2_desc: "你的私人日记是一个思想的秘密工坊——一个“过渡空间”，让你在没有压力或评判的情况下，连接思想，并精进你的思维过程。",
                     pillar3_title: "无负担的专业指导",
                     pillar3_desc: "我们的专家是你的后盾和护盾。他们在幕后进行繁复的分析工作，将复杂的概念提炼成简单、温和且可操作的指导。",
                     journey_title: "你的30天学习之旅",
@@ -352,7 +352,7 @@
                     contact_title: "准备好转变你的学习方式了吗？",
                     contact_subtitle: "你的旅程始于第一步。与我们的导师安排一次免费、无义务的探索性通话，以了解更多信息，看看Gritte是否适合你的学习目标。",
                     contact_cta: "预约免费咨询",
-                    footer_text: "&copy; 2025 Gritte 个性化学习。版权所有。"
+                    footer_text: "&copy; 2025 Gritte 个性化学习。版权所有。",
                     footer_terms: "服务条款",
                     footer_privacy: "隐私政策",
                     modal_title_terms: "服务条款",
@@ -379,18 +379,25 @@
                         </ul>
                     `
                 }
-                }
             };
 
-            // --- Get all necessary DOM elements ---
             const themeToggleBtn = document.getElementById('theme-toggle');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const langButtons = document.querySelectorAll('.lang-btn');
             const sections = document.querySelectorAll('.section-fade-in');
+            const policyModal = document.getElementById('policy-modal');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContent = document.getElementById('modal-content');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const termsBtn = document.getElementById('terms-btn');
+            const privacyBtn = document.getElementById('privacy-btn');
+            let currentLang = 'en';
 
-            // --- Language Switching Logic ---
             const setLanguage = (lang) => {
+                currentLang = lang;
                 console.log(`Setting language to: ${lang}`);
                 document.querySelectorAll('[data-key]').forEach(elem => {
                     const key = elem.getAttribute('data-key');
@@ -400,18 +407,14 @@
                 });
                 document.documentElement.lang = lang;
                 localStorage.setItem('gritte-lang', lang);
-
-                // Update active language button style
                 document.getElementById('lang-en').classList.toggle('active', lang === 'en');
                 document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
                 console.log("Language UI updated.");
             };
 
-            // --- Dark Mode Logic ---
             const applyTheme = (theme) => {
                 const sunIcon = document.getElementById('theme-toggle-sun');
                 const moonIcon = document.getElementById('theme-toggle-moon');
-
                 if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
                     sunIcon.classList.remove('hidden');
@@ -424,6 +427,30 @@
                 console.log(`Theme applied: ${theme}`);
             };
 
+            const openModal = (type) => {
+                const titleKey = type === 'terms' ? 'modal_title_terms' : 'modal_title_privacy';
+                const contentKey = type === 'terms' ? 'terms_content' : 'privacy_content';
+                modalTitle.innerText = translations[currentLang][titleKey];
+                modalBody.innerHTML = translations[currentLang][contentKey];
+                policyModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    modalOverlay.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                }, 10);
+                console.log(`Modal opened: ${type}`);
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.add('opacity-0');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    policyModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+                 console.log(`Modal closed`);
+            };
+
             themeToggleBtn.addEventListener('click', () => {
                 const isDark = document.documentElement.classList.contains('dark');
                 const newTheme = isDark ? 'light' : 'dark';
@@ -432,47 +459,36 @@
                 console.log(`Theme toggled to: ${newTheme}`);
             });
 
-            // --- Initial Setup Calls ---
-            
-            // 1. Activate Lucide Icons
             lucide.createIcons();
             console.log("Lucide icons initialized.");
             
-            // 2. Set Initial Theme
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
             applyTheme(initialTheme);
             console.log(`Initial theme check: saved='${savedTheme}', prefersDark='${prefersDark}', setting to '${initialTheme}'`);
 
-            // 3. Setup Language Buttons
             langButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const lang = button.getAttribute('data-lang');
-                    console.log(`Language button clicked: ${lang}`);
                     setLanguage(lang);
                 });
             });
 
-            // 4. Set Initial Language
             const savedLang = localStorage.getItem('gritte-lang');
             const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
             const initialLang = savedLang || browserLang;
             setLanguage(initialLang);
             console.log(`Initial language check: saved='${savedLang}', browser='${browserLang}', setting to '${initialLang}'`);
 
-            // 5. Setup Mobile Menu
             mobileMenuButton.addEventListener('click', () => {
-                console.log("Mobile menu button clicked.");
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // 6. Setup Smooth Scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    console.log(`Scrolling to ${targetId}`);
                     document.querySelector(targetId).scrollIntoView({
                         behavior: 'smooth'
                     });
@@ -482,11 +498,9 @@
                 });
             });
 
-            // 7. Setup Scroll-based Animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        console.log(`Section ${entry.target.id || 'element'} is intersecting, adding 'visible' class.`);
                         entry.target.classList.add('visible');
                     }
                 });
@@ -496,8 +510,9 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
-            console.log("Intersection observer set up for fade-in sections.");
-                    // Modal event listeners
+            console.log("Intersection observer set up.");
+
+            // Modal event listeners
             termsBtn.addEventListener('click', () => openModal('terms'));
             privacyBtn.addEventListener('click', () => openModal('privacy'));
             modalCloseBtn.addEventListener('click', closeModal);
